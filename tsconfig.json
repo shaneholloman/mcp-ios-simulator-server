@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "typeRoots": ["./node_modules/@types", "./types"],
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false
@@ -22,6 +22,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/__tests__/**/*.ts",
     "types/**/*.d.ts"
   ],
   "exclude": [
