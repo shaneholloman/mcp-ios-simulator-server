@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: © 2025 Industria de Diseño Textil S.A. INDITEX
-// SPDX-License-Identifier: APACHE-2.0
+// SPDX-License-Identifier: Apache-2.0
 
 import { v4 as uuidv4 } from 'uuid';
 import { IParser, ParseResult } from '../parser/interfaces/IParser.js';

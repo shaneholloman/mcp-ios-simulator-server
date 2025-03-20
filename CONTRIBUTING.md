@@ -12,7 +12,7 @@ this project.
 
 ## Prerequisites
 
-- Before starting to contribute to the code, you must first sign the [Contributor License Agreement (CLA)](./documents/ITX_OSS_CLA.pdf).
+- Before starting to contribute to the code, you must first sign the [Contributor License Agreement (CLA)](https://github.com/InditexTech/foss/blob/main/documents/ITX_OSS_CLA.pdf).
 
 ## How to Contribute
 

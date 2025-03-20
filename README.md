@@ -325,5 +325,4 @@ This project would not be possible without [facebook/idb](https://github.com/fac
 
 ## 📄 License
 
-SPDX-FileCopyrightText: © 2025 Industria de Diseño Textil S.A. INDITEX
-SPDX-License-Identifier: APACHE-2.0
+This tool is available as open source under the terms of the Apache-2.0.

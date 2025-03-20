@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // SPDX-FileCopyrightText: © 2025 Industria de Diseño Textil S.A. INDITEX
-// SPDX-License-Identifier: APACHE-2.0
+// SPDX-License-Identifier: Apache-2.0
 
 // IMMEDIATELY disable all console output to avoid interfering with stdio transport
 // This must come before any other imports to ensure nothing writes to stdout
