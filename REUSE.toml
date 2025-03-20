@@ -8,7 +8,9 @@ SPDX-PackageDownloadLocation = "https://github.com/InditexTech/mcp-server-simula
 path = [
     ".gitignore",
     ".npmrc",
-    "package*.json"
+    "package*.json",
+    "tsconfig.json",
+    "jest.config.js"
 ]
 SPDX-FileCopyrightText = "2025 Industria Textil de Diseño, S.A."
 SPDX-License-Identifier = "Apache-2.0"
@@ -29,6 +31,11 @@ SPDX-FileCopyrightText = "2025 Industria Textil de Diseño, S.A."
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
-path = "tsconfig.json"
+path = "demo/demo.gif"
+SPDX-FileCopyrightText = "2025 Industria Textil de Diseño, S.A."
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "src/**/__tests__/*"
 SPDX-FileCopyrightText = "2025 Industria Textil de Diseño, S.A."
 SPDX-License-Identifier = "Apache-2.0"
