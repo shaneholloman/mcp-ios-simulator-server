@@ -6,42 +6,48 @@ A Model Context Protocol (MCP) server that enables LLMs to interact with iOS sim
 
 This MCP server provides a bridge between Large Language Models (LLMs) and iOS simulators, offering comprehensive control through natural language commands. Here's what it can do:
 
+For detailed usage, see the Installation guide and Supported Commands sections. You can use this server either through direct MCP integration or as a standalone library.
+
+Check out the Architecture section to understand how the components work together to enable natural language control of iOS simulators.
+
+![demo](demo/demo.gif)
+
 ### 🎮 Simulator Control
-- [Create and manage simulator sessions](#simulator-management)
+- Create and manage simulator sessions
 - Boot, shutdown, and monitor simulator states
 - List available and running simulators
 - Focus simulator windows
 
 ### 📱 Application Management
-- [Install and manage iOS applications](#app-management)
+- Install and manage iOS applications
 - Launch, terminate, and uninstall apps
 - Monitor app states and verify installations
 - Handle app permissions and configurations
 
 ### 🖱️ UI Interaction & Testing
-- [Interact with the simulator UI](#ui-interaction)
+- Interact with the simulator UI
 - Execute tap, swipe, and button press actions
 - Input text and key sequences
-- [Access accessibility elements](#accessibility) for UI testing
-- [Record videos](#capture-and-logs) of UI interactions
+- Access accessibility elements for UI testing
+- Record videos of UI interactions
 
 ### 🛠️ Development & Debugging
-- [Capture screenshots and system logs](#capture-and-logs)
-- [Debug applications](#debug) in real-time
-- [Monitor and analyze crash logs](#crash-logs)
+- Capture screenshots and system logs
+- Debug applications in real-time
+- Monitor and analyze crash logs
 - Install dynamic libraries and manage app data
 
 ### ⚡ Advanced Features
-- [Additional functionality](#additional-commands) includes:
+- Additional functionality includes:
   - Location simulation
   - Media injection
   - URL scheme handling
   - Contact database management
   - Keychain operations
 
-For detailed usage, see the [Installation](#installation) guide and [Supported Commands](#supported-commands) sections. You can use this server either through [direct MCP integration](#mcp-integration) or as a [standalone library](#usage-as-a-library).
+For detailed usage, see the Installation guide and Supported Commands sections. You can use this server either through direct MCP integration or as a standalone library.
 
-Check out the [Architecture](#architecture) section to understand how the components work together to enable natural language control of iOS simulators.
+Check out the Architecture section to understand how the components work together to enable natural language control of iOS simulators.
 
 ## 📋 Requirements
 
@@ -51,6 +57,17 @@ Check out the [Architecture](#architecture) section to understand how the compon
 - **XCode**: With iOS simulators installed
 
 ## 🚀 Installation
+
+The easiest way to install this server is through Cline:
+
+1. Simply ask Cline:
+```
+Add this mcp to cline https://github.com/InditexTech/mcp-server-simulator-ios-idb
+```
+
+2. Cline will handle the installation process automatically, including dependency management and configuration.
+
+Alternatively, you can install it manually:
 
 ```bash
 # Clone the repository
@@ -66,6 +83,12 @@ npm install
 
 # Build the project
 npm run build
+
+# Start the project
+npm start
+
+# Run tests
+npm test
 ```
 
 The installation process will automatically:
@@ -169,13 +192,12 @@ mcp-server-simulator-ios-idb/
 │   ├── idb/                  # IDB manager implementation
 │   ├── mcp/                  # MCP server implementation
 │   ├── orchestrator/         # Command orchestrator
-│   ├── parser/               # Natural language parser
-│   └── index.ts              # Main entry point
-├── dist/                     # Compiled JavaScript (after build)
-├── types/                    # TypeScript type definitions
-├── scripts/                  # Installation scripts
-├── package.json              # Project configuration
-└── tsconfig.json             # TypeScript configuration
+│   ├── parser/              # Natural language parser
+│   └── index.ts             # Main entry point
+├── types/                   # TypeScript type definitions
+├── scripts/                 # Installation scripts
+├── package.json            # Project configuration
+└── tsconfig.json          # TypeScript configuration
 ```
 
 ## 🎯 Supported Commands
