@@ -49,6 +49,7 @@ jobs:
         run: npm test
 
       - name: SonarCloud Scan
+        if: ${{ vars.IS_INDITEXTECH_REPO == 'true' }}
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
