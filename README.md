@@ -71,7 +71,7 @@ Alternatively, you can install it manually:
 
 ```bash
 # Clone the repository
-git clone https://github.com/arturonaredo/mcp-server-simulator-ios-idb.git
+git clone https://github.com/InditexTech/mcp-server-simulator-ios-idb.git
 cd mcp-server-simulator-ios-idb
 
 # Create and activate Python virtual environment
