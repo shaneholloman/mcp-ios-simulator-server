@@ -1,17 +1,16 @@
----
 name: PR-verify
 
 on:
   pull_request:
 
 env:
-  GO_VERSION: 1.21.5
-  NODE_VERSION: 18.x
+  NODE_VERSION: '20.x'
+  PYTHON_VERSION: '3.11'
 
 jobs:
   verify:
     name: Verify
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,20 +18,50 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup Go version
-        uses: actions/setup-go@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          go-version: ${{ env.GO_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Verify
+      - name: Create and activate Python virtual environment
         run: |
-          make verify
+          python -m venv venv
+          source venv/bin/activate
+          python -m pip install --upgrade pip
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "PATH=$VIRTUAL_ENV/bin:$PATH" >> $GITHUB_ENV
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          source venv/bin/activate
+          npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
 
       - name: SonarCloud Scan
+        if: ${{ vars.IS_INDITEXTECH_REPO == 'true' }}
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=mcp-server-simulator-ios-idb
+            -Dsonar.organization=com.inditex
+            -Dsonar.sources=src
+            -Dsonar.tests=src/**/__tests__
+            -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
   repo-linter:
     name: Repo Linter
@@ -44,20 +73,15 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Setup Node version
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Execute repolinter
         run: |
-          echo "Installing repolinter"
           npm install -g repolinter@v0.11.2
-
-          echo "Executing repolinter"
-          repolinter --rulesetFile repolinter.json --dryRun .
-
-          echo "Repolinter execution completed"
+          repolinter lint .
 
   reuse-compliance:
     name: REUSE Compliance
@@ -70,4 +94,4 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v3
+        uses: fsfe/reuse-action@v5

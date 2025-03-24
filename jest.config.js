@@ -11,4 +11,8 @@ export default {
       useESM: true,
     }],
   },
+  testMatch: [
+    '**/__tests__/**/*.test.ts',
+    '!**/*.d.ts'
+  ],
 };
