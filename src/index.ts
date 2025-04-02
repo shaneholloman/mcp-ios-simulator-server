@@ -15,6 +15,7 @@ console.debug = () => {};
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import mcpServer from './mcp/mcp-server.js';
 
 /**
@@ -79,7 +80,12 @@ export function createMCPServer() {
 
 // Create logs directory with error handling
 try {
-  const logsDir = path.join(process.cwd(), 'logs');
+  // Get the directory name using ESM approach
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  // Go up one level from the src directory to the project root
+  const logsDir = path.join(__dirname, '..', 'logs');
+  
   if (!fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir, { recursive: true });
   }

@@ -10,11 +10,16 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { createMCPServer } from '../index.js';
 
 // Log configuration
-const logsDir = path.join(process.cwd(), 'logs');
+// Get the directory name using ESM approach
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Go up two levels from the src/mcp directory to the project root
+const logsDir = path.join(__dirname, '..', '..', 'logs');
 if (!fs.existsSync(logsDir)) {
   fs.mkdirSync(logsDir, { recursive: true });
 }
@@ -46,7 +51,7 @@ class MCPSimulatorServer {
     this.server = new Server(
       {
         name: 'iOS Simulator MCP Server',
-        version: '1.0.0',
+        version: '1.0.1',
       },
       {
         capabilities: {
