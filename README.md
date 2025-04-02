@@ -1,5 +1,7 @@
 # 📱 MCP Server for iOS Simulator
 
+[![MCP Server](https://glama.ai/mcp/servers/@InditexTech/mcp-server-simulator-ios-idb/badge)](https://glama.ai/mcp/servers/@InditexTech/mcp-server-simulator-ios-idb)
+
 A Model Context Protocol (MCP) server that enables LLMs to interact with iOS simulators through natural language commands.
 
 ## ℹ️ Overview
